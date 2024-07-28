@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import SingleMovieCard from "../../SingleMovieCard/SingleMovieCard";
-
+import PaginationComponent from "../../Pagination/Pagination";
+import "./Trending.css"
 const Trending = () => {
   const [trendingContent, setTrendingContent] = useState([]);
+  const [page , setPage ] = useState(1);
 
   const fetchTrendingContent = async () => {
     const url =
-      "https://api.themoviedb.org/3/trending/movie/day?language=en-US";
+      `https://api.themoviedb.org/3/trending/movie/day?language=en-US&page=${page}`;
     const options = {
       headers: {
         accept: "application/json",
@@ -27,7 +29,7 @@ const Trending = () => {
 
   useEffect(() => {
     fetchTrendingContent();
-  }, []);
+  }, [page]);
   return (
     <div>
       <span className="pageTitle">Trending</span>
@@ -48,6 +50,7 @@ const Trending = () => {
             );
           })}
       </div>
+      <PaginationComponent setPage = {setPage}/>
     </div>
   );
 };
