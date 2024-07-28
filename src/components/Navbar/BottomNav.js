@@ -1,14 +1,31 @@
-import React from "react";
+import React , {useEffect} from "react";
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import RestoreIcon from "@mui/icons-material/Restore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-
+import { useNavigate } from "react-router-dom";
 export default function SimpleBottomNavigation() {
   const [value, setValue] = React.useState(0);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    switch (value) {
+      case 0:
+        navigate("/");
+        break;
+      case 1:
+        navigate("/movies");
+        break;
+      case 2:
+        navigate("/search");
+        break;
+      default:
+        navigate("/");
+        break;
+    }
+  }, [value, navigate]);
   return (
     <Box sx={{ width: "100%", position: "fixed", bottom: 0, backgroundColor: "#2d313a", zIndex: 100 }}>
       <BottomNavigation
@@ -30,15 +47,15 @@ export default function SimpleBottomNavigation() {
         }}
       >
         <BottomNavigationAction
-          label="Recents"
+          label="Trending"
           icon={<RestoreIcon />}
         />
         <BottomNavigationAction
-          label="Favorites"
+          label="Movies"
           icon={<FavoriteIcon />}
         />
         <BottomNavigationAction
-          label="Nearby"
+          label="Search"
           icon={<LocationOnIcon />}
         />
       </BottomNavigation>
