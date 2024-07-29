@@ -20,7 +20,7 @@ function App() {
     </Routes>
     </Container>
     </div>
-    <SimpleBottomNavigation/>
+    {/* <SimpleBottomNavigation/> */}
     </Router>
     </>
   );
