@@ -30,7 +30,7 @@ const Genres = ({
     const options = {
       headers: {
         accept: "application/json",
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlZmVhNTM5ZTc3NjUyYmExYTFkNjVhMGY0ZGViZDU1MSIsIm5iZiI6MTcyMjI4MTYwNS41MTE2NCwic3ViIjoiNjEzYWYxOTg2NzgyNTkwMDhkODI1MjY3Iiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.0uLLGqBolV4-CgVGEKxC44OnoeL4iMCNGJsADUP0MIM'
+        Authorization: `Bearer ${process.env.REACT_APP_API_TOKEN}`
       },
   }
   try {
